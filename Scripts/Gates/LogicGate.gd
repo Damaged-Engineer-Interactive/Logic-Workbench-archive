@@ -18,11 +18,16 @@ var outputs: Dictionary = {} # Name : wire , if Name starts with "_", dont use a
 var id: String = "" # uuid of the component / block
 var size: Wire.Sizes # bit size of the component
 
+var processed = false # Check if the gate has been processed
+
 func _init() -> void:
 	self.id = Global.make_uuid().unwrap()
 
 func simulate() -> void:
 	return
+
+func tick() -> void: # Circuit.next_tick signal connects here
+	processed = true
 
 func has_output(i: String) -> Result:
 	if outputs.has(i):
