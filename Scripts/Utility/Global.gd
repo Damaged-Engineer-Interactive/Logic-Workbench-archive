@@ -1,4 +1,5 @@
 extends Node
+class_name Global
 
 func make_uuid() -> Result:
 	var uuid = PackedByteArray()
