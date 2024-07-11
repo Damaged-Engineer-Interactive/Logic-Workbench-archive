@@ -1,3 +1,5 @@
+extends Node
+
 func make_uuid() -> Result:
 	var uuid = PackedByteArray()
 	for _a in range(16):
