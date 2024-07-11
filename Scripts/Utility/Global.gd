@@ -1,6 +1,3 @@
-extends Node
-class_name Global
-
 func make_uuid() -> Result:
 	var uuid = PackedByteArray()
 	for _a in range(16):
