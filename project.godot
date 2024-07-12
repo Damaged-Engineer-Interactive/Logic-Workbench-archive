@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Logic Workbench"
-run/main_scene="res://temp.tscn"
+run/main_scene="res://Scenes/mainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,0 +1,156 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6775wknagpht"]
+
+[ext_resource type="Script" path="res://Scenes/MainMenuController.gd" id="1_o3012"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xftdj"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_o3012")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 649.0
+color = Color(0.304811, 0.27566, 0.356549, 1)
+
+[node name="NewProject" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 326.0
+offset_right = 680.0
+offset_bottom = 376.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "New Project"
+
+[node name="LoadProject" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 390.0
+offset_right = 680.0
+offset_bottom = 440.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Load Project"
+
+[node name="Settings" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 454.0
+offset_right = 680.0
+offset_bottom = 504.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Settings"
+
+[node name="Credits" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 518.0
+offset_right = 680.0
+offset_bottom = 568.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Credits"
+
+[node name="Exit" type="Button" parent="MainMenu"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 582.0
+offset_right = 680.0
+offset_bottom = 632.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Exit"
+
+[node name="SettingsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="SettingsMenu"]
+offset_right = 1155.0
+offset_bottom = 649.0
+color = Color(0.304811, 0.27566, 0.356549, 1)
+
+[node name="BackSettings" type="Button" parent="SettingsMenu"]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 216.0
+offset_bottom = 64.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Back"
+
+[node name="NewProjectMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="NewProjectMenu"]
+offset_right = 1155.0
+offset_bottom = 649.0
+color = Color(0.304811, 0.27566, 0.356549, 1)
+
+[node name="BackNP" type="Button" parent="NewProjectMenu"]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 216.0
+offset_bottom = 64.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Back"
+
+[node name="LoadProjectMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="LoadProjectMenu"]
+offset_right = 1155.0
+offset_bottom = 649.0
+color = Color(0.304811, 0.27566, 0.356549, 1)
+
+[node name="BackLP" type="Button" parent="LoadProjectMenu"]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 216.0
+offset_bottom = 64.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Back"
+
+[node name="CreditsMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CreditsMenu"]
+offset_right = 1155.0
+offset_bottom = 649.0
+color = Color(0.304811, 0.27566, 0.356549, 1)
+
+[node name="BackCredits" type="Button" parent="CreditsMenu"]
+offset_left = 16.0
+offset_top = 14.0
+offset_right = 216.0
+offset_bottom = 64.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xftdj")
+text = "Back"
+
+[node name="node" type="Node" parent="."]
+
+[connection signal="button_up" from="MainMenu/NewProject" to="." method="_on_new_project_button_up"]
+[connection signal="button_up" from="MainMenu/LoadProject" to="." method="_on_load_peroject_button_up"]
+[connection signal="button_up" from="MainMenu/LoadProject" to="." method="_on_load_project_button_up"]
+[connection signal="button_up" from="MainMenu/Settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="MainMenu/Credits" to="." method="_on_credits_button_up"]
+[connection signal="button_up" from="MainMenu/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="SettingsMenu/BackSettings" to="." method="_on_back_settings_button_up"]
+[connection signal="button_up" from="NewProjectMenu/BackNP" to="." method="_on_back_np_button_up"]
+[connection signal="button_up" from="LoadProjectMenu/BackLP" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="LoadProjectMenu/BackLP" to="." method="_on_back_lp_button_up"]
+[connection signal="button_up" from="CreditsMenu/BackCredits" to="." method="_on_back_credits_button_up"]
+[connection signal="button_up" from="CreditsMenu/BackCredits" to="." method="_on_back_button_up"]
