@@ -1,56 +1,45 @@
-extends Node
 class_name Result
+extends Node
+## Base class for every ValueWrapper
 
-var data = null
-var error : int = OK
-var msg : String = ""
+var data : Variant
+var error : int
+var msg : String
+var time : String
 
-func _init(e : int, d, m : String = "") -> void:
-	self.data = d # Data
-	self.error = e # Error Code
-	self.msg = m # Error Message
-	if is_error():
-		push_error(self)
-		printerr(self)
-	elif is_empty():
-		self.queue_free()
-	else:
-		print(self)
+func _init(e: int,d : Variant,m: String):
+	error = e
+	data = d
+	msg = m
+	_setup()
 
-func is_error() -> bool:
-	if error == OK:
-		return false # No error
-	else:
-		return true # Error
-
-func unwrap() -> Variant:
-	if is_error():
-		return null
-	else:
-		return data
 
 func _to_string() -> String:
-	return match_err(error) + " : " + msg + " - " + str(data)
+	return "{time} - {err} : {msg} || {data}".format({"time":time,"err":_match_err(error),"msg":msg,"data":str(data)})
 
-func is_empty() -> bool:
-	if error == OK and data == null:
-		return true
-	else:
+
+func _setup():
+	time = Time.get_datetime_string_from_system(false,true)
+	Wrapper.push(self)
+
+func _is_error():
+	if OK:
 		return false
+	return true
 
-func match_err(err: int) -> String:
-	match err:
+func _match_err(e):
+	var res = ""
+	match e:
 		OK:
-			return "OK"
+			res = "OK"
 		ERR_UNCONFIGURED:
-			return "ERR_UNCONFIGURED"
+			res = "ERR_UNCONFIGURED"
 		ERR_ALREADY_EXISTS:
-			return "ERR_ALREADY_EXISTS"
+			res = "ERR_ALREADY_EXISTS"
 		ERR_DOES_NOT_EXIST:
-			return "ERR_DOES_NOT_EXIST"
+			res = "ERR_DOES_NOT_EXIST"
 		ERR_INVALID_DATA:
-			return "ERR_INVALID_DATA"
+			res = "ERR_INVALID_DATA"
 		ERR_INVALID_PARAMETER:
-			return "ERR_INVALID_PARAMETER"
-		_:
-			return str(err)
+			res = "ERR_INVALID_PARAMETER"
+	return "%-25d" % res

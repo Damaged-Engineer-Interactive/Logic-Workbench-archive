@@ -10,20 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Logic Workbench"
-run/main_scene="res://Scenes/Workspace.tscn"
+config/name="LW Temp"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Global="*res://Scripts/Utility/Global.gd"
-Wrapper="*res://Scripts/Utility/Wrapper.gd"
-
-[display]
-
-window/size/viewport_width=1200
-window/size/viewport_height=800
 
 [rendering]
 

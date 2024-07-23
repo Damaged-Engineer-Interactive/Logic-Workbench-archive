@@ -1,20 +1,16 @@
 extends Node
-class_name Global
 
-func make_uuid() -> Result:
-	var uuid = PackedByteArray()
+func make_id() -> Result:
+	var id = PackedByteArray()
 	for _a in range(16):
-		uuid.append(randi()%256)
+		id.append(randi()%256)
 	
-	# Set version to 4
-	uuid[6] = (uuid[6] & 0x0F) | 0x40
-	# Set variant to DCE 1.1
-	uuid[8] = (uuid[8] & 0x3F) | 0x80
+	var id_str: String = "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x" % [
+			id[0], id[1], id[2], id[3],
+			id[4], id[5], id[6], id[7],
+			id[8], id[9], id[10], id[11],
+			id[12], id[13], id[14], id[15] ]
 	
-	var uuid_str: String = "%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x" % [
-		uuid[0], uuid[1], uuid[2], uuid[3],
-		uuid[4], uuid[5], uuid[6], uuid[7],
-		uuid[8], uuid[9], uuid[10], uuid[11],
-		uuid[12], uuid[13], uuid[14], uuid[15] ]
+	var id_strn := StringName(id_str)
 	
-	return Result.new(OK,uuid_str)
+	return Result.new(OK,id_strn,"Global::make_id()")

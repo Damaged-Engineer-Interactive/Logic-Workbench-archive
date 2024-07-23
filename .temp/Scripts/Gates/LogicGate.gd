@@ -1,12 +1,17 @@
-extends Node
+extends Node2D
 class_name LogicGate
 
-var title: String = ""
-var short: String = ""
-var description: String = ""
+@export_group("Informational")
+@export var title: String = ""
+@export var short: String = ""
+@export var description: String = ""
 
-var position: Vector3i = Vector3i(0,0,0) # x, y, layer
+@export var stats: Dictionary = {}
 
+@export_group("Visualisation")
+var pos: Vector3i = Vector3i(0,0,0) # x, y, layer
+
+@export_group("Data")
 var gate_name: String = ""
 
 var multi_input: bool = true # Allow Multiple Input Pins
@@ -22,6 +27,29 @@ var processed = false # Check if the gate has been processed
 
 func _init() -> void:
 	self.id = Global.make_uuid().unwrap()
+	add_to_group("Gates",true)
+
+func get_short():
+	return self.short
+
+func set_short(val):
+	self.short = val
+
+func get_title():
+	return self.title
+
+func set_title(val):
+	self.title = val
+
+func get_description():
+	return self.description
+
+func set_description(val):
+	self.description = val
+
+func _setup() -> void:
+	self.id = Global.make_uuid().unwrap()
+	add_to_group("Gates",true)
 
 func simulate() -> void:
 	return
