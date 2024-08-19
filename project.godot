@@ -12,20 +12,37 @@ config_version=5
 
 config/name="Logic Workbench"
 run/main_scene="res://Scenes/Workspace.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Logic Workbench"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 0)
+config/icon="res://Assets/Images/Icon.png"
 
 [autoload]
 
-Global="*res://Scripts/Utility/Global.gd"
 Wrapper="*res://Scripts/Utility/Wrapper.gd"
+Global="*res://Scripts/Utility/Global.gd"
+DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
+MusicManager="*res://addons/MusicManager/music_manager.tscn"
+
+[debug]
+
+gdscript/warnings/native_method_override=1
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=800
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/mode=2
+window/size/transparent=true
+window/per_pixel_transparency/allowed=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/MusicManager/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg")
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

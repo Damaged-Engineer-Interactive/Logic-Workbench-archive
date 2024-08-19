@@ -1,0 +1,353 @@
+[gd_scene load_steps=8 format=3 uid="uid://50lofyqp7co5"]
+
+[ext_resource type="Script" path="res://Scripts/Workspace.gd" id="1_d8yny"]
+[ext_resource type="StyleBox" uid="uid://b47cbcptti4rg" path="res://Assets/Separator.stylebox" id="2_0vkvu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyigr"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1875, 0.1875, 0.1875, 1)
+border_width_bottom = 1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kkmfq"]
+size = Vector2(5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0pd5"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1875, 0.1875, 0.1875, 1)
+border_width_right = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67trx"]
+bg_color = Color(0.109573, 0.110486, 0.167969, 1)
+border_width_left = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgnm6"]
+
+[node name="Workspace" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_d8yny")
+metadata/_edit_lock_ = true
+
+[node name="TopBar" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iyigr")
+
+[node name="MenuHolder" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+
+[node name="Project" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "Project"
+switch_on_hover = true
+
+[node name="Edit" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "Edit"
+switch_on_hover = true
+
+[node name="View" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "View"
+switch_on_hover = true
+
+[node name="Music" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "Music"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Enable"
+popup/item_0/checkable = 1
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Current Song"
+popup/item_1/id = 1
+popup/item_1/separator = true
+popup/item_2/text = "Logic Everflowing"
+popup/item_2/id = 2
+popup/item_2/disabled = true
+
+[node name="Separator" type="Panel" parent="TopBar/MenuHolder"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_0vkvu")
+
+[node name="Center" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+theme_override_constants/minimum_grab_thickness = 0
+theme_override_constants/autohide = 0
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_kkmfq")
+
+[node name="TopBar" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_s0pd5")
+
+[node name="Container" type="VBoxContainer" parent="Center/TopBar"]
+layout_mode = 2
+
+[node name="GatesLabel" type="Label" parent="Center/TopBar/Container"]
+layout_mode = 2
+text = "Gates"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Separator" type="Panel" parent="Center/TopBar/Container"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_0vkvu")
+
+[node name="GatesContainer" type="VBoxContainer" parent="Center/TopBar/Container"]
+layout_mode = 2
+
+[node name="Workspace" type="GraphEdit" parent="Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_67trx")
+theme_override_styles/menu_panel = SubResource("StyleBoxEmpty_xgnm6")
+scroll_offset = Vector2(0, -31)
+right_disconnects = true
+show_zoom_label = true
+show_grid_buttons = false
+
+[node name="ChipMenu" type="PopupMenu" parent="."]
+title = "ChipMenu"
+size = Vector2i(150, 89)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "GateName"
+item_0/id = 0
+item_0/separator = true
+item_1/text = "View"
+item_1/id = 1
+item_2/text = "Delete"
+item_2/id = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="WireMenu" type="PopupMenu" parent="."]
+title = "WireMenu"
+size = Vector2i(150, 120)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "Wire"
+item_0/id = 0
+item_0/separator = true
+item_1/text = "Delete"
+item_1/id = 1
+item_2/text = ""
+item_2/id = 2
+item_2/separator = true
+
+[node name="ColorMenu" type="PopupMenu" parent="WireMenu"]
+title = "ColorMenu"
+size = Vector2i(150, 143)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 5
+item_0/text = "Magenta"
+item_0/id = 0
+item_1/text = "Red"
+item_1/id = 1
+item_2/text = "Orange"
+item_2/id = 2
+item_3/text = "Green"
+item_3/id = 3
+item_4/text = "Cyan"
+item_4/id = 4
+
+[node name="SetupOptions" type="PopupPanel" parent="."]
+initial_position = 2
+size = Vector2i(300, 200)
+visible = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SetupOptions"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 196.0
+
+[node name="Titel" type="Label" parent="SetupOptions/VBoxContainer"]
+layout_mode = 2
+text = "Setup "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator1" type="HSeparator" parent="SetupOptions/VBoxContainer"]
+layout_mode = 2
+
+[node name="Options" type="VBoxContainer" parent="SetupOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="bit_size" type="HBoxContainer" parent="SetupOptions/VBoxContainer/Options"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Name" type="Label" parent="SetupOptions/VBoxContainer/Options/bit_size"]
+layout_mode = 2
+text = "Bit Size"
+
+[node name="SEP" type="VSeparator" parent="SetupOptions/VBoxContainer/Options/bit_size"]
+layout_mode = 2
+
+[node name="Value" type="OptionButton" parent="SetupOptions/VBoxContainer/Options/bit_size"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+item_count = 12
+selected = 1
+popup/item_0/text = "Component"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "1 Bit"
+popup/item_1/id = 1
+popup/item_2/text = "2 Bits"
+popup/item_2/id = 2
+popup/item_3/text = "4 Bits"
+popup/item_3/id = 4
+popup/item_4/text = "8 Bits"
+popup/item_4/id = 8
+popup/item_5/text = "16 Bits"
+popup/item_5/id = 16
+popup/item_6/text = "32 BIts"
+popup/item_6/id = 32
+popup/item_7/text = "64 Bits"
+popup/item_7/id = 64
+popup/item_8/text = "128 Bits"
+popup/item_8/id = 128
+popup/item_9/text = "256 Bits"
+popup/item_9/id = 256
+popup/item_10/text = "512 Bits"
+popup/item_10/id = 512
+popup/item_11/text = "1024 Bits"
+popup/item_11/id = 1024
+
+[node name="gate_name" type="HBoxContainer" parent="SetupOptions/VBoxContainer/Options"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Name" type="Label" parent="SetupOptions/VBoxContainer/Options/gate_name"]
+layout_mode = 2
+text = "Gate Name"
+
+[node name="SEP" type="VSeparator" parent="SetupOptions/VBoxContainer/Options/gate_name"]
+layout_mode = 2
+
+[node name="Value" type="LineEdit" parent="SetupOptions/VBoxContainer/Options/gate_name"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="inputs" type="HBoxContainer" parent="SetupOptions/VBoxContainer/Options"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Name" type="Label" parent="SetupOptions/VBoxContainer/Options/inputs"]
+layout_mode = 2
+text = "Inputs"
+
+[node name="SEP" type="VSeparator" parent="SetupOptions/VBoxContainer/Options/inputs"]
+layout_mode = 2
+
+[node name="Value" type="SpinBox" parent="SetupOptions/VBoxContainer/Options/inputs"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 10.0
+allow_greater = true
+update_on_text_changed = true
+suffix = "Ports"
+
+[node name="HSeparator2" type="HSeparator" parent="SetupOptions/VBoxContainer"]
+layout_mode = 2
+
+[node name="BottomRow" type="HBoxContainer" parent="SetupOptions/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Create" type="Button" parent="SetupOptions/VBoxContainer/BottomRow"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+disabled = true
+text = "Create"
+
+[node name="Cancel" type="Button" parent="SetupOptions/VBoxContainer/BottomRow"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Cancel"
+
+[node name="VAL_SIZES" type="OptionButton" parent="."]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+item_count = 12
+selected = 1
+popup/item_0/text = "Component"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "1 Bit"
+popup/item_1/id = 1
+popup/item_2/text = "2 Bits"
+popup/item_2/id = 2
+popup/item_3/text = "4 Bits"
+popup/item_3/id = 4
+popup/item_4/text = "8 Bits"
+popup/item_4/id = 8
+popup/item_5/text = "16 Bits"
+popup/item_5/id = 16
+popup/item_6/text = "32 BIts"
+popup/item_6/id = 32
+popup/item_7/text = "64 Bits"
+popup/item_7/id = 64
+popup/item_8/text = "128 Bits"
+popup/item_8/id = 128
+popup/item_9/text = "256 Bits"
+popup/item_9/id = 256
+popup/item_10/text = "512 Bits"
+popup/item_10/id = 512
+popup/item_11/text = "1024 Bits"
+popup/item_11/id = 1024
+
+[node name="VAL_STRING" type="LineEdit" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VAL_INT" type="SpinBox" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 10.0
+allow_greater = true
+update_on_text_changed = true
+suffix = "Ports"
+
+[connection signal="gui_input" from="Center/Workspace" to="." method="_on_workspace_gui_input"]
+[connection signal="node_deselected" from="Center/Workspace" to="." method="_on_workspace_node_deselected"]
+[connection signal="node_selected" from="Center/Workspace" to="." method="_on_workspace_node_selected"]
+[connection signal="popup_request" from="Center/Workspace" to="." method="_on_workspace_popup_request"]

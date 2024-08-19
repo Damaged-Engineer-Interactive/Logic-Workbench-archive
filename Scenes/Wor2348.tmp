@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://50lofyqp7co5"]
+
+[ext_resource type="Script" path="res://Scripts/Workspace.gd" id="1_d8yny"]
+[ext_resource type="Script" path="res://Scripts/Simulation/Gates/Utility/LogicGate.gd" id="2_83wme"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4a8r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgnm6"]
+
+[node name="Workspace" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_d8yny")
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Workspace" type="GraphEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l4a8r")
+theme_override_styles/menu_panel = SubResource("StyleBoxEmpty_xgnm6")
+show_zoom_label = true
+show_grid_buttons = false
+
+[node name="LogicGate" type="GraphNode" parent="Workspace"]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 200.0
+offset_right = 1009.0
+offset_bottom = 255.0
+mouse_filter = 1
+position_offset = Vector2(1000, 200)
+script = ExtResource("2_83wme")
+gate_name = &"TestGate 1"
+short = &"TEST"
+description = "This is, what a Gate looks like
+( Made using code )"
+
+[node name="ChipMenu" type="PopupMenu" parent="."]
+title = "ChipMenu"
+size = Vector2i(150, 89)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "GateName"
+item_0/id = 0
+item_0/separator = true
+item_1/text = "View"
+item_1/id = 1
+item_2/text = "Delete"
+item_2/id = 2
+
+[node name="WireMenu" type="PopupMenu" parent="."]
+title = "WireMenu"
+size = Vector2i(150, 120)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "Wire"
+item_0/id = 0
+item_0/separator = true
+item_1/text = "Delete"
+item_1/id = 1
+item_2/text = ""
+item_2/id = 2
+item_2/separator = true
+
+[node name="ColorMenu" type="PopupMenu" parent="WireMenu"]
+title = "ColorMenu"
+size = Vector2i(150, 143)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 5
+item_0/text = "Magenta"
+item_0/id = 0
+item_1/text = "Red"
+item_1/id = 1
+item_2/text = "Orange"
+item_2/id = 2
+item_3/text = "Green"
+item_3/id = 3
+item_4/text = "Cyan"
+item_4/id = 4
+
+[connection signal="popup_request" from="Workspace" to="." method="_on_workspace_popup_request"]

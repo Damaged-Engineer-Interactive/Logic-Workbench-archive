@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://50lofyqp7co5"]
+
+[ext_resource type="Script" path="res://Scripts/Workspace.gd" id="1_d8yny"]
+[ext_resource type="StyleBox" uid="uid://b47cbcptti4rg" path="res://Assets/Separator.stylebox" id="2_0vkvu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyigr"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.1875, 0.1875, 0.1875, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4a8r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgnm6"]
+
+[node name="Workspace" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_d8yny")
+metadata/_edit_lock_ = true
+
+[node name="TopBar" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iyigr")
+
+[node name="MenuHolder" type="HBoxContainer" parent="TopBar"]
+layout_mode = 2
+
+[node name="Project" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "Project"
+
+[node name="Edit" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "Edit"
+
+[node name="View" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "View"
+
+[node name="Music" type="MenuButton" parent="TopBar/MenuHolder"]
+layout_mode = 2
+text = "Music"
+item_count = 3
+popup/item_0/text = "Enable"
+popup/item_0/checkable = 1
+popup/item_0/checked = true
+popup/item_0/id = 0
+popup/item_1/text = "Current Song"
+popup/item_1/id = 1
+popup/item_1/separator = true
+popup/item_2/text = "Logic Everflowing"
+popup/item_2/id = 2
+popup/item_2/disabled = true
+
+[node name="Center" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+theme_override_constants/minimum_grab_thickness = 0
+
+[node name="TopBar" type="PanelContainer" parent="Center"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iyigr")
+
+[node name="Container" type="VBoxContainer" parent="Center/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="GatesLabel" type="Label" parent="Center/TopBar/Container"]
+layout_mode = 2
+text = "Gates"
+
+[node name="Separator" type="Panel" parent="Center/TopBar/Container"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_0vkvu")
+
+[node name="GatesContainer" type="VBoxContainer" parent="Center/TopBar/Container"]
+layout_mode = 2
+
+[node name="Workspace" type="GraphEdit" parent="Center"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l4a8r")
+theme_override_styles/menu_panel = SubResource("StyleBoxEmpty_xgnm6")
+scroll_offset = Vector2(0, -516)
+right_disconnects = true
+show_zoom_label = true
+show_grid_buttons = false
+
+[node name="ChipMenu" type="PopupMenu" parent="."]
+title = "ChipMenu"
+size = Vector2i(150, 89)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "GateName"
+item_0/id = 0
+item_0/separator = true
+item_1/text = "View"
+item_1/id = 1
+item_2/text = "Delete"
+item_2/id = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="WireMenu" type="PopupMenu" parent="."]
+title = "WireMenu"
+size = Vector2i(150, 120)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 3
+item_0/text = "Wire"
+item_0/id = 0
+item_0/separator = true
+item_1/text = "Delete"
+item_1/id = 1
+item_2/text = ""
+item_2/id = 2
+item_2/separator = true
+
+[node name="ColorMenu" type="PopupMenu" parent="WireMenu"]
+title = "ColorMenu"
+size = Vector2i(150, 143)
+extend_to_title = true
+min_size = Vector2i(150, 75)
+keep_title_visible = true
+hide_on_checkable_item_selection = false
+allow_search = false
+item_count = 5
+item_0/text = "Magenta"
+item_0/id = 0
+item_1/text = "Red"
+item_1/id = 1
+item_2/text = "Orange"
+item_2/id = 2
+item_3/text = "Green"
+item_3/id = 3
+item_4/text = "Cyan"
+item_4/id = 4
+
+[connection signal="gui_input" from="Center/Workspace" to="." method="_on_workspace_gui_input"]
+[connection signal="popup_request" from="Center/Workspace" to="." method="_on_workspace_popup_request"]

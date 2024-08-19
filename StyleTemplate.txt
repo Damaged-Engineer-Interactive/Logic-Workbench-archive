@@ -2,7 +2,6 @@
 
 # The class this class extends
 extends Node
-
 # Docstring
 ## short description goes here 
 ## 

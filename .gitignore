@@ -4,6 +4,9 @@
 *.import
 export.cfg
 export_presets.cfg
+.private/
+.temp/
+
 
 # Imported translations (automatically generated from CSV files)
 *.translation
