@@ -966,8 +966,8 @@ layout_mode = 2
 visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+min_value = 1.0
 max_value = 10.0
-allow_greater = true
 update_on_text_changed = true
 suffix = "Ports"
 
