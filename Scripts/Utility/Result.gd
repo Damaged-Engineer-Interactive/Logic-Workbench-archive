@@ -7,7 +7,16 @@ enum Types {MESSAGE,LOG,WARNING,ERROR,DEBUG}
 const UNKNOWN: int = -1
 
 var type : Types
-var data : Variant
+var data : Variant:
+	set(value):
+		data = value
+		if data == null:
+			while not is_queued_for_deletion():
+				queue_free()
+	get:
+		while not is_queued_for_deletion():
+			queue_free()
+		return data
 var print_data: String
 var error : int
 var msg : String
