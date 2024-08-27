@@ -80,5 +80,3 @@ func print_entry(e: Result):
 			elif e.is_error():
 				e.to_output()
 				push_error(e)
-			elif e.is_debug():
-				e.to_output()

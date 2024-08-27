@@ -10,7 +10,7 @@ var type : Types
 var data : Variant:
 	set(value):
 		data = value
-		if data == null:
+		if data == null and ( type == Types.MESSAGE or type == Types.LOG):
 			while not is_queued_for_deletion():
 				queue_free()
 	get:

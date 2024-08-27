@@ -14,7 +14,7 @@ config/name="Logic Workbench"
 run/main_scene="res://Scenes/Workspace.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Logic Workbench"
-config/features=PackedStringArray("4.2", "GL Compatibility")
+config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 0)
 config/icon="res://Assets/Images/Icon.png"
 
@@ -24,6 +24,8 @@ Wrapper="*res://Scripts/Utility/Wrapper.gd"
 Global="*res://Scripts/Utility/Global.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 MusicManager="*res://addons/MusicManager/music_manager.tscn"
+GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [debug]
 
@@ -39,7 +41,19 @@ window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MusicManager/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg")
+enabled=PackedStringArray("res://addons/MusicManager/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/gui_auto_layout/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+
+[gui_transitions]
+
+config/default/auto_start=true
+config/default/fade_layout=true
+config/default/center_pivot=true
+config/default/duration=0.5
+config/default/delay=0.5
+config/default/transition_type="QUAD"
+config/default/ease_type="IN_OUT"
+config/default/animation_enter=4
+config/default/animation_leave=4
 
 [rendering]
 

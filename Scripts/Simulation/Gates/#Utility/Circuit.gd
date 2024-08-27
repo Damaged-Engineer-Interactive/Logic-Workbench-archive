@@ -189,21 +189,25 @@ func remove_gate(gate: LogicGate) -> Result:
 	if not ( has_gate( gate ).data ) :
 		return Result.new(ERR_DOES_NOT_EXIST,null,_id_fmt(remove_gate,true,"Gate with that ID does not exist"),Result.Types.ERROR)
 	# remove connections that contain the gate
+	var removed: Array[Connection] = []
 	for key: String in _connections.keys():
 		var connection: Connection = _connections.get(key)
 		if connection.has_gate(gate):
+			removed.append(connection)
 			remove_connection(connection)
 	# remove io that is made by the gate
 	match gate.class_str:
 		"InputGate": # InputGate.gd
 			var input: InternalInput = find_input(gate.gate_name).data
 			remove_input(input.slot)
+			_input_gates.erase(gate.id)
 		"OutputGate": # OutputGate.gd
 			var output: InternalOutput = find_output(gate.gate_name).data
 			remove_output(output.slot) 
+			_output_gates.erase(gate.id)
 	# remove gate
 	_gates.erase(gate.id)
-	return Result.new(OK,null,_id_fmt(remove_gate,false))
+	return Result.new(OK,removed,_id_fmt(remove_gate,false))
 
 func has_gate(gate: LogicGate) -> Result:
 	return Result.new(OK,_gates.has(gate.id),_id_fmt(has_gate,false))
@@ -229,6 +233,7 @@ func remove_connection(connection: Connection) -> Result:
 	if not ( has_connection(connection).data ) :
 		return Result.new(ERR_DOES_NOT_EXIST,null,_id_fmt(remove_connection,true,"Connection with that ID does not exist"),Result.Types.ERROR)
 	_connections.erase(connection.id)
+	connection.queue_free()
 	return Result.new(OK,null,_id_fmt(remove_connection,false))
 
 ## Check if the connection exist in the circuit

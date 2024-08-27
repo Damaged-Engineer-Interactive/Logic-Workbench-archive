@@ -53,9 +53,6 @@ var current_player: AudioStreamPlayer
 # Timer that keeps track when a song has finished playing
 @onready var song_timer: Timer = $SongTimer
 
-# AnimationPlayer for handling the crossfade effect between music players
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
-
 func _ready() -> void:
 	play_song.connect(_on_play_song)
 	play_playlist.connect(_on_play_playlist)
@@ -74,16 +71,17 @@ func _on_play_song(song: MusicTrack, is_looping: bool, is_fading: bool, fade_tim
 	is_crossfading = is_fading
 	crossfade_time = fade_time
 	
-	if is_crossfading:
-		_change_with_crossfade(song)
-	else:
-		stop_music.emit()
-		music_player.stream = song.track
-		music_player.volume_db = 0.0
-		music_player.play()
-		current_player = music_player
-		song_timer.start(song.track.get_length())
-		song_changed.emit(song)
+	# BROKEN : See "_change_with_crossfade"
+	#if is_crossfading:
+		#_change_with_crossfade(song)
+	#else:
+	stop_music.emit()
+	music_player.stream = song.track
+	music_player.volume_db = 0.0
+	music_player.play()
+	current_player = music_player
+	song_timer.start(song.track.get_length())
+	song_changed.emit(song)
 
 
 func _on_play_playlist(playlist: MusicPlaylist, is_looping: bool, is_shuffling: bool, is_fading: bool, fade_time: float) -> void:
@@ -96,8 +94,9 @@ func _on_play_playlist(playlist: MusicPlaylist, is_looping: bool, is_shuffling: 
 	if is_shuffling:
 		current_playlist.tracks.shuffle()
 	
-	if is_crossfading:
-		_change_with_crossfade(current_song)
+	# BROKEN : see "_change_with_crossfade"
+	#if is_crossfading:
+		#_change_with_crossfade(current_song)
 	else:
 		stop_music.emit()
 		current_song = current_playlist.tracks[0]
@@ -108,26 +107,22 @@ func _on_play_playlist(playlist: MusicPlaylist, is_looping: bool, is_shuffling: 
 		song_timer.start(current_song.track.get_length())
 
 
-func _change_with_crossfade(song: MusicTrack) -> void:
-	var speed_scale = 1.0 / crossfade_time
-	speed_scale = clamp(speed_scale, 0.25, 4.0) 
-	
-	anim_player.speed_scale = speed_scale
-		
-	if music_player_2.playing:
-		music_player.stream = song.track
-		music_player.play()
-		anim_player.play("FADE_TO_1")
-		current_player = music_player
-	else:
-		music_player_2.stream = song.track
-		music_player_2.play()
-		anim_player.play("FADE_TO_2")
-		current_player = music_player_2
-		
-	current_song = song
-	song_timer.start(song.track.get_length() - crossfade_time)
-	song_changed.emit(song)
+# BROKEN : AnimationPlayer is not available in builds, 
+#func _change_with_crossfade(song: MusicTrack) -> void:
+	#if music_player_2.playing:
+		#music_player.stream = song.track
+		#music_player.play()
+		#anim_player.play("FADE_TO_1")
+		#current_player = music_player
+	#else:
+		#music_player_2.stream = song.track
+		#music_player_2.play()
+		#anim_player.play("FADE_TO_2")
+		#current_player = music_player_2
+		#
+	#current_song = song
+	#song_timer.start(song.track.get_length() - crossfade_time)
+	#song_changed.emit(song)
 
 
 func _on_stop_music() -> void:
@@ -174,16 +169,17 @@ func _on_song_timer_timeout():
 			
 		var next_song = current_playlist.tracks[current_song_idx]
 		
-		if is_crossfading:
-			_change_with_crossfade(next_song)
-		else:
-			stop_music.emit()
-			music_player.stream = next_song.track
-			music_player.volume_db = 0.0
-			music_player.play()
-			current_player = music_player
-			song_timer.start(next_song.track.get_length())
-			song_changed.emit(next_song)
+		# BROKEN : See "_change_with_crossfade"
+		#if is_crossfading:
+			#_change_with_crossfade(next_song)
+		#else:
+		stop_music.emit()
+		music_player.stream = next_song.track
+		music_player.volume_db = 0.0
+		music_player.play()
+		current_player = music_player
+		song_timer.start(next_song.track.get_length())
+		song_changed.emit(next_song)
 		
 	# Iterate through the playlist until it has finished
 	elif not is_looping_playlist and current_playlist:
@@ -195,16 +191,17 @@ func _on_song_timer_timeout():
 		else:
 			var next_song = current_playlist.tracks[current_song_idx]
 			
-			if is_crossfading:
-				_change_with_crossfade(next_song)
-			else:
-				stop_music.emit()
-				music_player.stream = next_song.track
-				music_player.volume_db = 0.0
-				music_player.play()
-				current_player = music_player
-				song_timer.start(next_song.track.get_length())
-				song_changed.emit(next_song)
+			# BROKEN : See "_change_with_crossfade"
+			#if is_crossfading:
+				#_change_with_crossfade(next_song)
+			#else:
+			stop_music.emit()
+			music_player.stream = next_song.track
+			music_player.volume_db = 0.0
+			music_player.play()
+			current_player = music_player
+			song_timer.start(next_song.track.get_length())
+			song_changed.emit(next_song)
 			
 	# For when song/playlist has finished playing and there is nothing else to play
 	else:

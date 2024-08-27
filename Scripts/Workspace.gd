@@ -8,6 +8,7 @@ extends VBoxContainer
 ## I dont even care why are you reading this ??
 
 # Signals
+signal continue_add
 
 # Enums
 
@@ -25,9 +26,11 @@ var selected: Dictionary
 # private variables
 var _available_gates: Dictionary
 
-var _last_added_gate: LogicGate
-
 var _loaded_gates: bool = false
+
+# loading related classes
+var _allow_add: bool = false
+
 # @onready variables
 @onready var workspace: GraphEdit = $Center/Workspace
 @onready var wire_layer: Control = workspace.get_child(0,true)
@@ -44,7 +47,14 @@ func _enter_tree():
 
 # optional built-in _ready() function
 func _ready():
-	_on_simulate_wait_time_drag_ended(true)
+	# remove features that should be hidden when released
+	if OS.has_feature("release") or OS.has_feature("hide_debug"):
+		var debug_container: PanelContainer = $Center/SideBar/TabContainer/Debug
+		$Center/SideBar/TabContainer.remove_child(debug_container)
+		debug_container.queue_free()
+		$SimulateTimer.wait_time = 0.1
+	else:
+		_on_simulate_wait_time_drag_ended(true)
 	# connect popup signals
 	$TopBar/MenuHolder/Menu.get_popup().index_pressed.connect(_on_menu_popup)
 	$TopBar/MenuHolder/Chip.get_popup().index_pressed.connect(_on_chip_popup)
@@ -61,20 +71,30 @@ func _ready():
 		current_db += 1
 		AudioServer.set_bus_volume_db(1,current_db)
 	_on_update_io_pressed()
+	_on_view_popup(1)
 	print("_ready() - Done \n\n")
 
 # remaining built-in functions
 func _process(_d):
 	$Center/SideBar/TabContainer/Debug/Container/FPS.text = "FPS : %s" % str(Engine.get_frames_per_second())
 	$TopBar/MenuHolder/Zoom.text = str(int(workspace.zoom * 100)) + "%"
+	
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_MINIMIZED:
+		print("Stopped")
+		$SimulateTimer.stop()
+	else:
+		if $SimulateTimer.is_stopped():
+			$SimulateTimer.start()
 
 func _on_simulate_timer_timeout():
 	_on_simulate_pressed()
 
 #region workspace
-func _on_workspace_gui_input(event):
-	if event is InputEventMouseButton:
-		pass
+# FIXME
+func _on_workspace_gui_input(_event):#
+	pass
+	#if event is InputEventMouseButton:
+		#pass
 
 func _on_workspace_popup_request(pos):
 	if selected.size() == 0:
@@ -115,22 +135,32 @@ func _on_workspace_connection_request(from_node: StringName, from_port: int, to_
 	if workspace.is_node_connected(from_node,from_port,to_node,to_port):
 		Result.new(ERR_ALREADY_EXISTS,null,"Workspace::_on_workspace_connection_request() - Fail : Already exists",Result.Types.ERROR)
 		return
+	var allow_connection: bool = true
 	if use_circuit:
 		var from_res: Result = circuit.get_gate(from_node)
 		if from_res.is_error():
+			allow_connection = false
 			Result.new(-1,null,"Workspace::_on_workspace_connection_request() - Fail : Unknown Error",Result.Types.ERROR)
 		var from: LogicGate = from_res.data
 		
 		var to_res: Result = circuit.get_gate(to_node)
 		if to_res.is_error():
+			allow_connection = false
 			Result.new(-1,null,"Workspace::_on_workspace_connection_request() - Fail : Unknown Error",Result.Types.ERROR)
 		var to: LogicGate = to_res.data
 		
+		for connection: Connection in circuit._connections.values():
+			if connection.dest_gate.id == to.id:
+				if connection.dest_input == to_port:
+					allow_connection = false
+					Result.new(-1,null,"Workspace::_on_workspace_connection_request() - Fail : Already exists",Result.Types.DEBUG)
 		var connection := Connection.new(from,from_port,to,to_port)
 		var res: Result = circuit.add_connection(connection)
 		if res.is_error():
+			allow_connection = false
 			return Result.new(-1,null,"Workspace::_on_workspace_connection_request() - Fail : Unknown Error",Result.Types.ERROR)
-	workspace.connect_node(from_node,from_port,to_node,to_port)
+	if allow_connection:
+		workspace.connect_node(from_node,from_port,to_node,to_port)
 	Result.new(OK,null,"Workspace::_on_workspace_connection_request() - Success")
 
 func _on_workspace_disconnection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int) -> void:
@@ -196,7 +226,9 @@ func _add_gate(n: String) -> void:
 			values[need] = VAL
 			opt.add_child(hbox)
 		$SetupOptions.show()
-		await $SetupOptions/VBoxContainer/BottomRow/Create.pressed
+		await continue_add
+		if _allow_add == false:
+			return
 		for need: String in values.keys():
 			var val = values[need]
 			match needed[need]:
@@ -207,12 +239,11 @@ func _add_gate(n: String) -> void:
 				LogicGate.OptionTypes.SIZES:
 					val = val.get_selected_id()
 			options[need] = val
-		$SetupOptions.hide() # hide popup
 	var src = gate.get_script()
-	gate = src.new(options)
-	$Center/Workspace.add_child(gate)
-	circuit.add_gate(gate)
-	_last_added_gate = gate
+	var new_gate = src.new(options)
+	$Center/Workspace.add_child(new_gate)
+	new_gate.position_offset = workspace.scroll_offset
+	circuit.add_gate(new_gate)
 	_on_update_io_pressed()
 
 func _remove_gate(gates: Array[StringName]) -> void:
@@ -220,11 +251,24 @@ func _remove_gate(gates: Array[StringName]) -> void:
 		for child in workspace.get_children():
 			if child.name != n:
 				continue
-			circuit.remove_gate(child)
+			var res: Result = circuit.remove_gate(child)
+			for connection: Connection in res.data:
+				_on_workspace_disconnection_request(
+					connection.src_gate.name,
+					connection.src_output,
+					connection.dest_gate.name,
+					connection.dest_input)
 			workspace.remove_child(child)
 
-func _on_cancel_pressed():
+func _on_create_pressed() -> void:
+	_allow_add = true
 	$SetupOptions.hide()
+	continue_add.emit()
+
+func _on_cancel_pressed():
+	_allow_add = false
+	$SetupOptions.hide()
+	continue_add.emit()
 
 func _on_zoom_pressed():
 	workspace.zoom = 1
@@ -256,7 +300,7 @@ func _on_view_popup(idx: int) -> void:
 		0: # Minimap
 			workspace.minimap_enabled = not workspace.minimap_enabled
 		1: # Center
-			pass
+			workspace.scroll_offset = Vector2(-100,-100)
 		2: # Arange
 			workspace.arrange_nodes()
 
