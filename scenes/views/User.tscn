@@ -1,0 +1,499 @@
+[gd_scene load_steps=33 format=3 uid="uid://b1tggchrttyyv"]
+
+[ext_resource type="Script" path="res://scripts/views/User.gd" id="1_ke7yf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q454l"]
+bg_color = Color(0.08, 0.08, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_170h5"]
+bg_color = Color(0.04, 0.04, 0.05, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_30jfn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phqt8"]
+bg_color = Color(0.03, 0.03, 0.15, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7s4eo"]
+bg_color = Color(0.02, 0.02, 0.1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxx2x"]
+bg_color = Color(0.04, 0.04, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kutb7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bebd0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80w7r"]
+bg_color = Color(0.04, 0.04, 0.05, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xs4fi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lwpsy"]
+bg_color = Color(0.03, 0.03, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cij1g"]
+bg_color = Color(0.02, 0.02, 0.1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe5hy"]
+bg_color = Color(0.04, 0.04, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f0kaf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51hby"]
+bg_color = Color(0.15, 0.03, 0.03, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqbwt"]
+bg_color = Color(0.1, 0.02, 0.02, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2t4i"]
+bg_color = Color(0.2, 0.04, 0.04, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t88i"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.02, 0.02, 0.1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82gpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0rby"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yojpu"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.04, 0.04, 0.05, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4nws"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85e82"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.048, 0.048, 0.06, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hqphb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0firj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18xd0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4vj1d"]
+bg_color = Color(0.04, 0.04, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fofd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.02, 0.02, 0.1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anipi"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.02, 0.02, 0.1, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_weota"]
+Button/styles/disabled = SubResource("StyleBoxFlat_170h5")
+Button/styles/focus = SubResource("StyleBoxEmpty_30jfn")
+Button/styles/hover = SubResource("StyleBoxFlat_phqt8")
+Button/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+Button/styles/pressed = SubResource("StyleBoxFlat_yxx2x")
+CheckBox/styles/disabled = SubResource("StyleBoxFlat_170h5")
+CheckBox/styles/focus = SubResource("StyleBoxEmpty_kutb7")
+CheckBox/styles/hover = SubResource("StyleBoxFlat_phqt8")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_phqt8")
+CheckBox/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_7s4eo")
+CheckButton/styles/disabled = SubResource("StyleBoxFlat_170h5")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_bebd0")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_phqt8")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_phqt8")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_7s4eo")
+ColorPickerButton/styles/disabled = SubResource("StyleBoxFlat_80w7r")
+ColorPickerButton/styles/focus = SubResource("StyleBoxEmpty_xs4fi")
+ColorPickerButton/styles/hover = SubResource("StyleBoxFlat_lwpsy")
+ColorPickerButton/styles/normal = SubResource("StyleBoxFlat_cij1g")
+ColorPickerButton/styles/pressed = SubResource("StyleBoxFlat_xe5hy")
+DestructiveButton/base_type = &"Button"
+DestructiveButton/styles/disabled = SubResource("StyleBoxFlat_170h5")
+DestructiveButton/styles/focus = SubResource("StyleBoxEmpty_f0kaf")
+DestructiveButton/styles/hover = SubResource("StyleBoxFlat_51hby")
+DestructiveButton/styles/normal = SubResource("StyleBoxFlat_cqbwt")
+DestructiveButton/styles/pressed = SubResource("StyleBoxFlat_j2t4i")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_phqt8")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_yxx2x")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_yxx2x")
+HScrollBar/styles/scroll = SubResource("StyleBoxFlat_6t88i")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_6t88i")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_yxx2x")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_yxx2x")
+HSlider/styles/slider = SubResource("StyleBoxFlat_6t88i")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 0)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_82gpu")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_170h5")
+MenuButton/styles/disabled = SubResource("StyleBoxFlat_170h5")
+MenuButton/styles/focus = SubResource("StyleBoxEmpty_h0rby")
+MenuButton/styles/hover = SubResource("StyleBoxFlat_phqt8")
+MenuButton/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+MenuButton/styles/pressed = SubResource("StyleBoxFlat_yxx2x")
+Panel/styles/panel = SubResource("StyleBoxFlat_yojpu")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_yojpu")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_7s4eo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_yxx2x")
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_e4nws")
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+TabBar/styles/button_highlight = SubResource("StyleBoxFlat_phqt8")
+TabBar/styles/button_pressed = SubResource("StyleBoxFlat_yxx2x")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_85e82")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_hqphb")
+TextEdit/styles/focus = SubResource("StyleBoxEmpty_0firj")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_7s4eo")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_170h5")
+Tree/styles/focus = SubResource("StyleBoxEmpty_18xd0")
+Tree/styles/panel = SubResource("StyleBoxFlat_7s4eo")
+Tree/styles/selected = SubResource("StyleBoxFlat_4vj1d")
+Tree/styles/selected_focus = SubResource("StyleBoxFlat_4vj1d")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_phqt8")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_yxx2x")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_yxx2x")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_7fofd")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_anipi")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_phqt8")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_yxx2x")
+VSlider/styles/slider = SubResource("StyleBoxFlat_6t88i")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6smx"]
+bg_color = Color(0.08, 0.08, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TitlePart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.152222
+grow_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q454l")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Logic Workbench"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BodyPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.152222
+anchor_right = 1.0
+anchor_bottom = 0.971111
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart"]
+layout_mode = 2
+
+[node name="User" type="Label" parent="BodyPart/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Manage your Account"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BodyPart/VBoxContainer"]
+layout_mode = 2
+
+[node name="Root" type="HBoxContainer" parent="BodyPart/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = SubResource("Theme_weota")
+alignment = 1
+script = ExtResource("1_ke7yf")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart/VBoxContainer/Root"]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="StatePanel" type="PanelContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer/StatePanel"]
+layout_mode = 2
+
+[node name="ServiceState" type="Label" parent="BodyPart/VBoxContainer/Root/VBoxContainer/StatePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Online Services : Offline"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UserState" type="Label" parent="BodyPart/VBoxContainer/Root/VBoxContainer/StatePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Current User : [n/a]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionState" type="Label" parent="BodyPart/VBoxContainer/Root/VBoxContainer/StatePanel/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Initializing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="LoginPanel" type="PanelContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer/LoginPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="LoginUsername" type="LineEdit" parent="BodyPart/VBoxContainer/Root/VBoxContainer/LoginPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="LoginPassword" type="LineEdit" parent="BodyPart/VBoxContainer/Root/VBoxContainer/LoginPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Password"
+
+[node name="LoginButton" type="Button" parent="BodyPart/VBoxContainer/Root/VBoxContainer/LoginPanel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"DestructiveButton"
+text = "Login"
+
+[node name="RegisterPanel" type="PanelContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer/RegisterPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="RegisterUsername" type="LineEdit" parent="BodyPart/VBoxContainer/Root/VBoxContainer/RegisterPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="RegisterPassword" type="LineEdit" parent="BodyPart/VBoxContainer/Root/VBoxContainer/RegisterPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Password"
+
+[node name="RegisterKey" type="LineEdit" parent="BodyPart/VBoxContainer/Root/VBoxContainer/RegisterPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "License Key"
+
+[node name="RegisterButton" type="Button" parent="BodyPart/VBoxContainer/Root/VBoxContainer/RegisterPanel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"DestructiveButton"
+text = "Register"
+
+[node name="UserPanel" type="PanelContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer/UserPanel"]
+layout_mode = 2
+
+[node name="UserName" type="Label" parent="BodyPart/VBoxContainer/Root/VBoxContainer/UserPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Username : [n/a]"
+vertical_alignment = 1
+
+[node name="UserSubscriptions" type="Label" parent="BodyPart/VBoxContainer/Root/VBoxContainer/UserPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Subscriptions : [n/a]"
+vertical_alignment = 1
+
+[node name="UserCreated" type="Label" parent="BodyPart/VBoxContainer/Root/VBoxContainer/UserPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Created : [n/a]"
+vertical_alignment = 1
+
+[node name="LogoutButton" type="Button" parent="BodyPart/VBoxContainer/Root/VBoxContainer/UserPanel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"DestructiveButton"
+text = "Log out"
+
+[node name="PasswordPanel" type="PanelContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart/VBoxContainer/Root/VBoxContainer/PasswordPanel"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="NewPassword" type="LineEdit" parent="BodyPart/VBoxContainer/Root/VBoxContainer/PasswordPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "New Password"
+
+[node name="UpdatePasswordButton" type="Button" parent="BodyPart/VBoxContainer/Root/VBoxContainer/PasswordPanel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"DestructiveButton"
+text = "Update password"
+
+[node name="Spacer-2" type="Control" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Home" type="Button" parent="BodyPart/VBoxContainer/Root/VBoxContainer"]
+layout_mode = 2
+text = "Home"
+
+[node name="BottomPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.968889
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e6smx")
+metadata/_edit_use_anchors_ = true
+
+[node name="CreatorLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "    Created by : Damaged Engineer Interactive"
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Version : 2.0.0 ( Beta )    "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="BodyPart/VBoxContainer/Root/VBoxContainer/LoginPanel/VBoxContainer/LoginButton" to="BodyPart/VBoxContainer/Root" method="_login_button_pressed"]
+[connection signal="pressed" from="BodyPart/VBoxContainer/Root/VBoxContainer/RegisterPanel/VBoxContainer/RegisterButton" to="BodyPart/VBoxContainer/Root" method="_register_button_pressed"]
+[connection signal="pressed" from="BodyPart/VBoxContainer/Root/VBoxContainer/UserPanel/VBoxContainer/LogoutButton" to="BodyPart/VBoxContainer/Root" method="_logout_button_pressed"]
+[connection signal="pressed" from="BodyPart/VBoxContainer/Root/VBoxContainer/PasswordPanel/VBoxContainer/UpdatePasswordButton" to="BodyPart/VBoxContainer/Root" method="_update_password_button_pressed"]
+[connection signal="pressed" from="BodyPart/VBoxContainer/Root/VBoxContainer/Home" to="BodyPart/VBoxContainer/Root" method="_home_pressed"]

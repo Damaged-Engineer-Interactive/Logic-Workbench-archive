@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://xf8cbbw8bc6n"]
+
+[ext_resource type="Script" path="res://scripts/prefabs/TopBar.gd" id="1_m7bap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwrhn"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0572, 0.0572, 0.13, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ijtdj"]
+
+[node name="TopBar" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.0344444
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwrhn")
+script = ExtResource("1_m7bap")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Logic Workbench"
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ijtdj")
+text = "X"
+flat = true
+
+[connection signal="pressed" from="Title" to="." method="_title_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_quit_pressed"]

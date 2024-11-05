@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2h1xffdjmxh"]
+
+[ext_resource type="Theme" uid="uid://d3dm8tqfg7pxq" path="res://assets/theme.tres" id="1_q6ova"]
+[ext_resource type="Script" path="res://scripts/views/LoadProject.gd" id="2_nymku"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbr3a"]
+bg_color = Color(0.04, 0.04, 0.05, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q6tn2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck4p4"]
+bg_color = Color(0.08, 0.08, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_q6ova")
+script = ExtResource("2_nymku")
+
+[node name="BodyPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.152222
+anchor_right = 1.0
+anchor_bottom = 0.971111
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sbr3a")
+metadata/_edit_use_anchors_ = true
+
+[node name="Data" type="VBoxContainer" parent="BodyPart"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LoadProject" type="Label" parent="BodyPart/Data"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Load your existing Project"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BodyPart/Data"]
+layout_mode = 2
+
+[node name="ProjectList" type="ItemList" parent="BodyPart/Data"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q6tn2")
+allow_rmb_select = true
+item_count = 3
+fixed_icon_size = Vector2i(16, 16)
+item_0/text = "asd"
+item_1/text = "asd"
+item_2/text = "asd"
+
+[node name="Buttons" type="HBoxContainer" parent="BodyPart/Data"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="BodyPart/Data/Buttons"]
+custom_minimum_size = Vector2(290, 25)
+layout_mode = 2
+text = "Cancel"
+
+[node name="LoadButton" type="Button" parent="BodyPart/Data/Buttons"]
+custom_minimum_size = Vector2(290, 25)
+layout_mode = 2
+text = "Load"
+
+[node name="TitlePart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.152222
+grow_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck4p4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Logic Workbench"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BottomPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.968889
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck4p4")
+metadata/_edit_use_anchors_ = true
+
+[node name="CreatorLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "    Created by : Damaged Engineer Interactive"
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Version : 2.0.0 ( Beta )    "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="item_selected" from="BodyPart/Data/ProjectList" to="." method="_project_list_item_selected"]
+[connection signal="pressed" from="BodyPart/Data/Buttons/CancelButton" to="." method="_cancel_button_pressed"]
+[connection signal="pressed" from="BodyPart/Data/Buttons/LoadButton" to="." method="_load_button_pressed"]

@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddfrftmika3bx"]
+
+[ext_resource type="Theme" uid="uid://d3dm8tqfg7pxq" path="res://assets/theme.tres" id="1_4al5a"]
+[ext_resource type="Script" path="res://scripts/views/Credits.gd" id="2_qmc16"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbr3a"]
+bg_color = Color(0.04, 0.04, 0.05, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3x6n"]
+bg_color = Color(0.08, 0.08, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="NewProject" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_4al5a")
+script = ExtResource("2_qmc16")
+
+[node name="BodyPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.152222
+anchor_right = 1.0
+anchor_bottom = 0.971111
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sbr3a")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BodyPart"]
+layout_mode = 2
+
+[node name="Credits" type="Label" parent="BodyPart/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="BodyPart/VBoxContainer"]
+layout_mode = 2
+
+[node name="HomeButton" type="Button" parent="BodyPart/VBoxContainer"]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Home"
+
+[node name="TitlePart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.152222
+grow_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3x6n")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Logic Workbench"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BottomPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.968889
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3x6n")
+metadata/_edit_use_anchors_ = true
+
+[node name="CreatorLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "    Created by : Damaged Engineer Interactive"
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Version : 2.0.0 ( Beta )    "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="BodyPart/VBoxContainer/HomeButton" to="." method="_home_button_pressed"]

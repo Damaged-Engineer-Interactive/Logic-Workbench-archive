@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://k36bv7uu4eki"]
+
+[ext_resource type="Theme" uid="uid://d3dm8tqfg7pxq" path="res://assets/theme.tres" id="1_cnpqh"]
+[ext_resource type="Script" path="res://scripts/views/Home.gd" id="2_5iyo7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sbr3a"]
+bg_color = Color(0.04, 0.04, 0.05, 1)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ck4p4"]
+bg_color = Color(0.08, 0.08, 0.1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_cnpqh")
+script = ExtResource("2_5iyo7")
+
+[node name="BodyPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.152222
+anchor_right = 1.0
+anchor_bottom = 0.971111
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_sbr3a")
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="BodyPart"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="BodyPart/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="NewProject" type="Button" parent="BodyPart/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "New Project"
+
+[node name="LoadProject" type="Button" parent="BodyPart/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Load Project"
+
+[node name="Settings" type="Button" parent="BodyPart/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="User" type="Button" parent="BodyPart/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "User"
+
+[node name="Credits" type="Button" parent="BodyPart/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Credits"
+
+[node name="Quit" type="Button" parent="BodyPart/CenterContainer/Buttons"]
+custom_minimum_size = Vector2(175, 40)
+layout_mode = 2
+theme = ExtResource("1_cnpqh")
+theme_type_variation = &"DestructiveButton"
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+
+[node name="TitlePart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.152222
+grow_horizontal = 2
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck4p4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TitlePart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 75
+text = "Logic Workbench"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BottomPart" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.968889
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ck4p4")
+metadata/_edit_use_anchors_ = true
+
+[node name="CreatorLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "    Created by : Damaged Engineer Interactive"
+vertical_alignment = 1
+
+[node name="VersionLabel" type="Label" parent="BottomPart"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Version : 2.0.0 ( Beta )    "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="BodyPart/CenterContainer/Buttons/NewProject" to="." method="_new_project_pressed"]
+[connection signal="pressed" from="BodyPart/CenterContainer/Buttons/LoadProject" to="." method="_load_project_pressed"]
+[connection signal="pressed" from="BodyPart/CenterContainer/Buttons/Settings" to="." method="_settings_pressed"]
+[connection signal="pressed" from="BodyPart/CenterContainer/Buttons/User" to="." method="_user_pressed"]
+[connection signal="pressed" from="BodyPart/CenterContainer/Buttons/Credits" to="." method="_credits_pressed"]
+[connection signal="pressed" from="BodyPart/CenterContainer/Buttons/Quit" to="." method="_quit_pressed"]

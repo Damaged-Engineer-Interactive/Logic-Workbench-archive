@@ -11,22 +11,27 @@ config_version=5
 [application]
 
 config/name="Logic Workbench"
-config/version="1.1.0.0"
-run/main_scene="res://Scenes/Workspace.tscn"
+config/version="2.0.1.0"
+run/main_scene="res://scenes/root.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="Logic Workbench"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 0)
-config/icon="res://Assets/Images/Icon.png"
+config/icon="res://assets/images/Icon.png"
+boot_splash/minimum_display_time=100
+
+[audio]
+
+buses/default_bus_layout="res://assets/bus_layout.tres"
 
 [autoload]
 
-Wrapper="*res://Scripts/Utility/Wrapper.gd"
-Global="*res://Scripts/Utility/Global.gd"
 DiscordRPCLoader="*res://addons/discord-rpc-gd/nodes/discord_autoload.gd"
 MusicManager="*res://addons/MusicManager/music_manager.tscn"
 GuiTransitions="*res://addons/simple-gui-transitions/singleton.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+Global="*res://scripts/Global.gd"
 
 [debug]
 
@@ -36,17 +41,39 @@ gdscript/warnings/native_method_override=1
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/size/mode=2
-window/size/transparent=true
+window/size/resizable=false
 window/per_pixel_transparency/allowed=true
+window/handheld/orientation=4
 
 [dotnet]
 
 project/assembly_name="Logic Workbench"
 
+[editor]
+
+naming/node_name_num_separator=3
+naming/default_signal_callback_name="_{node_name}_{signal_name}"
+naming/default_signal_callback_to_self_name="_self_{signal_name}"
+naming/scene_name_casing=1
+naming/script_name_casing=1
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MusicManager/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/gui_auto_layout/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+enabled=PackedStringArray("res://addons/MusicManager/plugin.cfg", "res://addons/SignalVisualizer/plugin.cfg", "res://addons/SliderLabel/plugin.cfg", "res://addons/discord-rpc-gd/plugin.cfg", "res://addons/explore-editor-theme/plugin.cfg", "res://addons/godot-firebase/plugin.cfg", "res://addons/gui_auto_layout/plugin.cfg", "res://addons/http-sse-client/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/simple-gui-transitions/plugin.cfg", "res://addons/tnowe_extra_controls/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://assets/": "green",
+"res://scenes/": "blue",
+"res://scripts/": "purple",
+"res://shaders/": "pink"
+}
+
+[gui]
+
+theme/custom="res://assets/theme.tres"
 
 [gui_transitions]
 
@@ -55,13 +82,14 @@ config/default/fade_layout=true
 config/default/center_pivot=true
 config/default/duration=0.5
 config/default/delay=0.5
-config/default/transition_type="QUAD"
 config/default/ease_type="IN_OUT"
 config/default/animation_enter=4
 config/default/animation_leave=4
+config/default/transition_type="QUAD"
 
 [rendering]
 
+rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
